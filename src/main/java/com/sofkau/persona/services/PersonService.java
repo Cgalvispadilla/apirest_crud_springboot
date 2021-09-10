@@ -38,8 +38,8 @@ public class PersonService implements InterfaceServicesPerson {
         return  data.findById(id)
                 .map(person -> {
                     person.setId(persona.getId());
-                    person.setNombre(persona.getNombre());
-                    person.setEdad(persona.getEdad());
+                    person.setName(persona.getName());
+                    person.setAge(persona.getAge());
                     return data.save(person);
                 }).get();
     }

@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name="persona")
+@Table(name="person")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +16,6 @@ public class Person {
     @Id
     @Column(name = "id")
     private Integer id;
-    private String nombre;
-    private String edad;
+    private String name;
+    private String age;
 }
