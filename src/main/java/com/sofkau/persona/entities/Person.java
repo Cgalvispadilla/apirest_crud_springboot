@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="person")
@@ -14,7 +15,8 @@ import javax.persistence.*;
 public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
+    @NotNull(message = "El id no puede ser null")
     private Integer id;
     private String name;
     private String age;

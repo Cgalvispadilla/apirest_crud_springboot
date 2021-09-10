@@ -2,10 +2,14 @@ package com.sofkau.persona.controllers;
 
 import com.sofkau.persona.entities.Person;
 import com.sofkau.persona.services.InterfaceServicesPerson;
+import com.sofkau.persona.utils.InvalidDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping("api/persona")
 @RestController
@@ -19,8 +23,12 @@ public class PersonRestController {
     }
 
     @PostMapping(value = "/agregar")
-    ResponseEntity<Person> addPerson(@RequestBody Person person) {
-        return new ResponseEntity<>(services.save(person), HttpStatus.CREATED);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Person addPerson(@Valid @RequestBody Person person, BindingResult result) {
+        if (result.hasErrors()) {
+            throw new InvalidDataException(result);
+        }
+        return services.save(person);
     }
 
     @DeleteMapping(value = "/delete/{id}")
