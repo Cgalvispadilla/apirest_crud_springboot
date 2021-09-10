@@ -14,20 +14,24 @@ public class PersonRestController {
     private InterfaceServicesPerson services;
 
     @GetMapping(value = "/listar")
-    public Iterable<Person> listAll(){
+    public Iterable<Person> listAll() {
         return services.list();
     }
 
     @PostMapping(value = "/agregar")
-    ResponseEntity<Person> addPerson(@RequestBody Person person){
+    ResponseEntity<Person> addPerson(@RequestBody Person person) {
         return new ResponseEntity<>(services.save(person), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    ResponseEntity<Person> deletePerson(@PathVariable int id){
+    ResponseEntity<Person> deletePerson(@PathVariable int id) {
         services.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping(value = "/editar/{id}")
+    ResponseEntity<Person> editPerson(@RequestBody Person person, @PathVariable int id) {
+        return new ResponseEntity(services.update(person, id), HttpStatus.OK);
+    }
 
 }
