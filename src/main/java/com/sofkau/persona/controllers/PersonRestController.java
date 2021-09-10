@@ -34,4 +34,8 @@ public class PersonRestController {
         return new ResponseEntity(services.update(person, id), HttpStatus.OK);
     }
 
+    @GetMapping("/buscar/{id}")
+    public Person listOnePerson(@PathVariable int id) {
+        return services.listById(id);
+    }
 }

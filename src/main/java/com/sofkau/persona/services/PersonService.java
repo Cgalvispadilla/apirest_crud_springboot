@@ -25,7 +25,7 @@ public class PersonService implements InterfaceServicesPerson {
 
     @Override
     public Person listById(int id) {
-        return data.getById(id);
+        return data.findById(id).get();
     }
 
     @Override
