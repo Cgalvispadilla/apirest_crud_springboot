@@ -23,5 +23,11 @@ public class PersonRestController {
         return new ResponseEntity<>(services.save(person), HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/delete/{id}")
+    ResponseEntity<Person> deletePerson(@PathVariable int id){
+        services.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 }
