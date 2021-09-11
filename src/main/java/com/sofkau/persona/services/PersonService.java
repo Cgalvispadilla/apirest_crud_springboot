@@ -24,7 +24,7 @@ public class PersonService implements InterfaceServicesPerson {
             throw new DuplicateKeyException("El id no puede estar vacio");
         }
         if(data.exists(Example.of(personAux))){
-            throw new DuplicateKeyException("Ya existe el usario con id: "+persona.getId());
+            throw new DuplicateKeyException("Ya existe el usuario con id: "+persona.getId());
         }
         return data.save(persona);
     }
@@ -38,7 +38,7 @@ public class PersonService implements InterfaceServicesPerson {
     public Person listById(int id) {
         Optional<Person> opt = data.findById(id);
         if(opt.isEmpty()){
-            throw new NoSuchElementException("No existe ningun usario con id "+id);
+            throw new NoSuchElementException("No existe ningun usuario con id "+id);
         }
         return opt.get();
     }
@@ -47,7 +47,7 @@ public class PersonService implements InterfaceServicesPerson {
     public void delete(int id) {
         Optional<Person> opt = data.findById(id);
         if(opt.isEmpty()){
-            throw new NoSuchElementException("No existe ningun usario con id "+id);
+            throw new NoSuchElementException("No existe ningun usuario con id "+id);
         }
         data.deleteById(id);
     }
@@ -56,7 +56,7 @@ public class PersonService implements InterfaceServicesPerson {
     public Person update(Person persona, int id) {
         Optional<Person> opt = data.findById(id);
         if(opt.isEmpty()){
-            throw new NoSuchElementException("No se puede editar puesto que existe ningun usario con id "+id);
+            throw new NoSuchElementException("No se puede editar puesto que no existe ningun usuario con id "+id);
         }
         return  opt
                 .map(person -> {
