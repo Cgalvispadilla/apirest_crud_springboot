@@ -19,11 +19,13 @@ public class PersonService implements InterfaceServicesPerson {
 
     @Override
     public Person save(Person persona) {
-        Person personAux= persona;
-        if(personAux.getId()==null){
-            throw new DuplicateKeyException("El id no puede estar vacio");
+        if(persona.getName()==null){
+            throw new DuplicateKeyException("El nombre no puede estar vacio");
         }
-        if(data.exists(Example.of(personAux))){
+        if(persona.getAge()==null){
+            throw new DuplicateKeyException("La edad no puede estar vacio");
+        }
+        if(data.exists(Example.of(persona))){
             throw new DuplicateKeyException("Ya existe el usuario con id: "+persona.getId());
         }
         return data.save(persona);
