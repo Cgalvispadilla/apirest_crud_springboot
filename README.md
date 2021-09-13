@@ -8,4 +8,4 @@ y crear una base de dato llamada "db_persona", ya haciendo todo estos cambios pu
 5. Para buscar por un id use la ruta get localhost:8080/api/persona/buscar/{id}
 
 
-Recuerde que todas estas rutas son en un entorno local usan postman
+Recuerde que todas estas rutas son en un entorno local usando postman
