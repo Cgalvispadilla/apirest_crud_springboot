@@ -55,10 +55,10 @@ public class PersonService implements InterfaceServicesPerson {
     }
 
     @Override
-    public Person update(Person persona, int id) {
-        Optional<Person> opt = data.findById(id);
+    public Person update(Person persona) {
+        Optional<Person> opt = data.findById(persona.getId());
         if(opt.isEmpty()){
-            throw new NoSuchElementException("No se puede editar puesto que no existe ningun usuario con id "+id);
+            throw new NoSuchElementException("No se puede editar puesto que no existe ningun usuario con id "+persona.getId());
         }
         return  opt
                 .map(person -> {

@@ -37,9 +37,9 @@ public class PersonRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/editar/{id}")
-    ResponseEntity<Person> editPerson(@RequestBody Person person, @PathVariable int id) {
-        return new ResponseEntity(services.update(person, id), HttpStatus.OK);
+    @PutMapping(value = "/editar")
+    ResponseEntity<Person> editPerson(@RequestBody Person person) {
+        return new ResponseEntity(services.update(person), HttpStatus.OK);
     }
 
     @GetMapping("/buscar/{id}")

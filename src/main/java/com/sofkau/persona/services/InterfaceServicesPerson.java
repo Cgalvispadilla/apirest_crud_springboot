@@ -9,5 +9,5 @@ public interface InterfaceServicesPerson {
     public List<Person> list();
     public  Person listById(int id);
     public void delete(int id);
-    public Person update(Person persona, int id);
+    public Person update(Person persona);
 }
